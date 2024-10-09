@@ -27,10 +27,8 @@ export const testData = {
     recordTitle: () => faker.lorem.sentence(), // Function to generate a random title
     familyName: () => faker.lorem.word(), // Function to generate a random family name
     recordDescription: () => faker.lorem.paragraph(), // Function to generate a random description
-    filePath: './path/to/your/file.txt', // Path to the file to be uploaded
-    successMessage: 'Upload successful', // Expected success message upon a successful upload
 
     // Dynamic resource type - Select randomly from a list
-    resourceType: () => faker.helpers.arrayElement(['Image', 'Video', 'Dataset', 'Other', 'Audio']),
+    resourceType: (): string => faker.helpers.arrayElement(['Image', 'Video', 'Dataset', 'Other', 'Audio']),
   },
 };

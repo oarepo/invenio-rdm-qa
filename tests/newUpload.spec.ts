@@ -2,7 +2,7 @@ import { test, expect } from '../utils/baseTest';
 import { UploadPage } from '../pages/uploadPage';
 import { testData } from '../data/testData';
 
-test.describe('Invenio RDM Upload Tests', () => {
+test.describe('New Upload', () => {
   let uploadPage: UploadPage;
 
   test.beforeEach(async ({ loggedInPage }) => {
@@ -19,18 +19,23 @@ test.describe('Invenio RDM Upload Tests', () => {
   test('Upload a file successfully', async () => {
     // Fill in the record details
     await uploadPage.fillTitle(testData.upload.recordTitle());
-   // await uploadPage.fillDescription(testData.upload.recordDescription());
     await uploadPage.fillFamilyName(testData.upload.familyName());
-    await uploadPage.selectDOIOption(false); // Adjust this based on your test needs
-    await uploadPage.selectResourceType(testData.upload.resourceType());
+    await uploadPage.selectDOIOption(true); // Adjust this based on your test needs
+    await uploadPage.selectResourceType();
 
-    // Upload a file (update this method call based on your UploadPage)
-    await uploadPage.uploadFile(testData.upload.filePath); // Make sure filePath is defined in testData
+    // Upload a file
+    await uploadPage.uploadRandomFile();
 
     // Click the Publish button
     await uploadPage.clickPublish();
 
-    // Verify the success message
-    await uploadPage.verifySuccessMessage(testData.upload.successMessage);
+    // Click the Publish button on the confirmation dialog
+    await uploadPage.clickPublishOnConfirmation();
+
+    // Check the title of the new created record in the detail
+    const recordExists = await uploadPage.checkRecordExists();
+    expect(recordExists).toBe(true); // Assert that the record exists
+
+   // await uploadPage.waitForFiveSeconds(); // Waiting 5s during debug
   });
 });
