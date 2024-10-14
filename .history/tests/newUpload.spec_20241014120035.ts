@@ -16,7 +16,7 @@ test.describe('New Upload', () => {
     }
   });
 
-  test('Upload a file successfully [Qase ID: RDM-7]', async () => {
+  test('Upload a file successfully', async () => {
     // Fill in the record details
     await uploadPage.fillTitle(testData.upload.recordTitle());
     await uploadPage.fillFamilyName(testData.upload.familyName());

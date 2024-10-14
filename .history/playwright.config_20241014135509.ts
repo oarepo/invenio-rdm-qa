@@ -11,8 +11,8 @@ export default defineConfig({
   reporter: [
     ['list'], // Default reporter for displaying test results
     ['playwright-qase-reporter', {
-      apiToken: process.env.QASE_TESTOPS_API_TOKEN,
-      projectCode: process.env.QASE_TESTOPS_PROJECT, 
+      apiToken: process.env.QASE_TESTOPS_API_TOKEN, // API token from Qase
+      projectCode: process.env.QASE_TESTOPS_PROJECT, // Project code from Qase (e.g., 'RDM')
       runComplete: true, // Upload test results after all tests are complete
       environment: process.env.QASE_ENVIRONMENT || 'production', // Environment (production, staging, etc.)
       logging: true // Enable logging for debugging

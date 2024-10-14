@@ -1,4 +1,4 @@
-import { test, chromium } from '@playwright/test';
+import { test, expect, chromium } from '@playwright/test';
 
 test('test', async () => {
   // Launch Chromium, but force it to use the Google Chrome executable

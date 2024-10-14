@@ -1,4 +1,4 @@
-import { test, expect } from '../utils/baseTest';
+import { test, expect } from '../utils/fixtures';
 import { testData } from '../data/testData';
 import { urls } from '../data/urls';
 

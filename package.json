@@ -9,7 +9,8 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.47.2",
-    "@types/node": "^22.7.4"
+    "@types/node": "^22.7.4",
+    "playwright-qase-reporter": "^2.0.15"
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.3"
