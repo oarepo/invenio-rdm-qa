@@ -4,7 +4,7 @@ import { UIHelper } from '../helpers/uiHelper';
 import { urls } from '../data/urls';
 import { testData } from '../data/testData';
 
-export class UploadPage {
+export class RecordDetail {
   private fileUploadHelper: FileUploadHelper;
   private uiHelper: UIHelper;
   public uploadedTitle: string;
@@ -110,48 +110,16 @@ export class UploadPage {
 
 // BUTTONS -----------------------------------------------------------------------------
 
-  // Method to click 'Save' button
-  async clickSave() {
-    await this.uiHelper.clickButtonByText('Save');
-  }
-
-  // Method to click 'Publish' button
-  async clickPublish() {
-    await this.page.click('button:has-text("Publish")');
-  }
-
-  // Method to click 'Edit' button
+  // Method to click the 'Edit' button
   async clickEdit() {
-    await this.page.getByRole('button', { name: 'Edit' }).click();
+    await this.page.click('#recordManagement > div > div:nth-child(1) > button');
   }
 
-  // Method to click the 'Save draft' button
-  async clickSaveDraft() {
-    await this.page.click('button[name="save"]');
+  // Method to click the 'Share' button
+  async clickShareButtonInRecordManagement() {
+    await this.page.click('//div[@id="recordManagement"]//button[contains(@class, "ui") and contains(text(), "Share")]');
   }
 
-  // Method to click the 'Preview' button
-  async clickPreview() {
-    await this.page.click('button[name="preview"]');
-  }
-
-  // Method to click the 'Publish' button on the confirmation dialog
-  async clickPublishOnConfirmation() {
-    await this.page.waitForTimeout(500);
-    // Wait for the modal to be visible
-    const modalSelector = 'div.ui.small.modal.transition.visible.active';
-    await this.page.waitForSelector(modalSelector, { state: 'visible' });
-  
-    // Wait for the 'Publish' button to be visible
-    const publishButtonSelector = `${modalSelector} button.ui.positive.button`;
-    const publishButton = await this.page.waitForSelector(publishButtonSelector, { state: 'visible' });
-  
-    // Log before clicking for debugging
-    console.log('Clicking the Publish button...');
-  
-    // Click the 'Publish' button
-    await publishButton.click();
-  }
 
 // VERIFICATION ------------------------------------------------------------------------
 

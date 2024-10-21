@@ -15,7 +15,7 @@ export class UploadPage {
     this.uploadedTitle = testData.upload.recordTitle();
   }
 
-// NAVIGATION --------------------------------------------------------------------------
+// NAVIGATION ----------------------------------------------------------------
 
   // Method to navigate directly to the homepage
   async navigateToHome() {
@@ -40,7 +40,7 @@ export class UploadPage {
     await this.page.click('//a[contains(@href, "/records/")][1]');
   }
 
-// FIELDS -----------------------------------------------------------------------------
+// FIELDS -------------------------------------------------------------------
 
    // Method to upload a random file using the helper
    async uploadRandomFile() {
@@ -108,7 +108,7 @@ export class UploadPage {
     await body.fill(description);
   }
 
-// BUTTONS -----------------------------------------------------------------------------
+// BUTTONS -------------------------------------------------------------------
 
   // Method to click 'Save' button
   async clickSave() {
@@ -123,16 +123,6 @@ export class UploadPage {
   // Method to click 'Edit' button
   async clickEdit() {
     await this.page.getByRole('button', { name: 'Edit' }).click();
-  }
-
-  // Method to click the 'Save draft' button
-  async clickSaveDraft() {
-    await this.page.click('button[name="save"]');
-  }
-
-  // Method to click the 'Preview' button
-  async clickPreview() {
-    await this.page.click('button[name="preview"]');
   }
 
   // Method to click the 'Publish' button on the confirmation dialog
@@ -153,7 +143,7 @@ export class UploadPage {
     await publishButton.click();
   }
 
-// VERIFICATION ------------------------------------------------------------------------
+// 
 
   // Method to verify the success message
   async verifySuccessMessage(message: string) {
