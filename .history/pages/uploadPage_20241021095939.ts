@@ -15,7 +15,7 @@ export class UploadPage {
     this.uploadedTitle = testData.upload.recordTitle();
   }
 
-// NAVIGATION --------------------------------------------------------------------------
+// NAVIGATION ----------------------------------------------------------------
 
   // Method to navigate directly to the homepage
   async navigateToHome() {
@@ -34,19 +34,19 @@ export class UploadPage {
     await this.page.getByRole('link', { name: 'My dashboard' }).click();
   }
 
-  // Method to navigate to the detail of a first record
+  // Navigate to the detail of a first record
   async firstRecordDetail() {
     await this.page.waitForSelector('//a[contains(@href, "/records/")][1]', { state: 'visible' });
     await this.page.click('//a[contains(@href, "/records/")][1]');
   }
 
-// FIELDS -----------------------------------------------------------------------------
+ // FIELDS -------------------------------------------------------------------
 
    // Method to upload a random file using the helper
    async uploadRandomFile() {
     await this.fileUploadHelper.uploadRandomFile();
   }
-
+  
   // Method to fill the record 'Title'
   async fillTitle(title: string) {
     this.uploadedTitle = title; // Store the title here
@@ -108,7 +108,7 @@ export class UploadPage {
     await body.fill(description);
   }
 
-// BUTTONS -----------------------------------------------------------------------------
+// BUTTONS -------------------------------------------------------------------
 
   // Method to click 'Save' button
   async clickSave() {
@@ -123,16 +123,6 @@ export class UploadPage {
   // Method to click 'Edit' button
   async clickEdit() {
     await this.page.getByRole('button', { name: 'Edit' }).click();
-  }
-
-  // Method to click the 'Save draft' button
-  async clickSaveDraft() {
-    await this.page.click('button[name="save"]');
-  }
-
-  // Method to click the 'Preview' button
-  async clickPreview() {
-    await this.page.click('button[name="preview"]');
   }
 
   // Method to click the 'Publish' button on the confirmation dialog
@@ -153,12 +143,21 @@ export class UploadPage {
     await publishButton.click();
   }
 
-// VERIFICATION ------------------------------------------------------------------------
+
 
   // Method to verify the success message
   async verifySuccessMessage(message: string) {
     await this.page.waitForSelector(`text=${message}`);
   }
+
+  // Method for implicit waiting (2 seconds)
+  async waitForTwoSeconds() {
+    await this.page.waitForTimeout(2000); // Waits for 2 seconds
+  }
+
+
+
+
 
   // Method to retrieve the description of the uploaded record
   async getRecordDescription(): Promise<string> {
@@ -186,10 +185,5 @@ export class UploadPage {
       console.error(`Expected title "${this.uploadedTitle}", but found "${titleText?.trim()}".`);
       return false;
     }
-  }
-
-  // Method for implicit waiting (2 seconds)
-  async waitForTwoSeconds() {
-    await this.page.waitForTimeout(2000); // Waits for 2 seconds
   }
 }
