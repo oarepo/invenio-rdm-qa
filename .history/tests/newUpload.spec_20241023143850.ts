@@ -18,7 +18,7 @@ test.describe('New Upload', () => {
     }
   });
 
-  test(qase(7, 'Upload a file successfully'), async () => {   // Qase test case ID: 
+  test('Upload a file successfully [Qase ID: RDM-7]', async () => {
     qase.fields({ 'severity': 'major', 'priority': 'high' }); // Qase test case values for severity and priority
 
     // Fill in the record details

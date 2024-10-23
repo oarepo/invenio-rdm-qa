@@ -66,24 +66,6 @@ export class newCommunity {
  // await this.page.locator('a.ui.icon.left.labeled.positive.button').click();
   }
 
-  // Method to select the 'Public' radio button in 'Community visibility'
-  async selectPublicCommunity() {
-    await this.page.locator("(//input[@type='radio' and @value='public'])[1]").check();
-    console.log('Selected Public community visibility.');
-  }
-
-  // Method to select the 'Restricted' radio button in 'Community visibility'
-  async selectRestrictedCommunity() {
-    await this.page.locator("(//input[@type='radio' and @value='public'])[2]").check();
-    console.log('Selected Restricted community visibility.');
-  }
-
-  // Method to click the 'Create community' button
-  async clickCreateCommunity() {
-    await this.page.locator('button.ui.icon.positive.left.labeled.button').click();
-    console.log(`Clicked the Create community button.`);
-  }
-
 // VERIFICATION ------------------------------------------------------------------------
 
   // Method for implicit waiting (2 seconds)

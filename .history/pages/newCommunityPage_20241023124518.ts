@@ -32,11 +32,6 @@ export class newCommunity {
     await this.uiHelper.navigateToMyDashboard();
   }
 
-  // Navigate to the "new community" page using the helper
-  async navigateToNewCommunity () {
-    await this.uiHelper.navigateToNewCommunity();
-  }
-
   // Navigate to the detail of the first record using the helper
   async firstRecordDetail() {
     await this.uiHelper.firstRecordDetail();
@@ -44,44 +39,22 @@ export class newCommunity {
 
 // FIELDS ------------------------------------------------------------------------------  
 
- // Method to fill in the 'Community name' field (by faker)
- async fillCommunityName() {
-    const communityName = testData.upload.communityName();
-    await this.page.locator('#metadata\\.title').fill(communityName);
-    console.log(`Filled the community name field with: ${communityName}`);
+  // Method to click the 'Style' dropdown and select a style
+  async selectStyle(style: string) {
+    await this.page.getByLabel('Style').locator('i').click();
+    await this.page.getByText(style).click();
   }
 
-  // Method to fill in the 'Identifier' field (by Faker)
-  async fillCommunityIdentifier() {
-    const communityIdentifier = testData.upload.communityIdentifier(); // Get the generated slug
-    await this.page.locator('#slug').fill(communityIdentifier); // Fill the slug field
-    console.log(`Filled the community identifier field with: ${communityIdentifier}`);
+  // Method to select the export option
+  async selectExportOption(option: string) {
+    await this.page.getByRole('option', { name: option }).dblclick();
   }
 
 // BUTTONS -----------------------------------------------------------------------------
 
   // Method to click the 'New community' button
   async clickNewCommunity() {
-    await this.page.getByRole('button', { name: 'New community' }).click();
- // await this.page.locator('a.ui.icon.left.labeled.positive.button').click();
-  }
-
-  // Method to select the 'Public' radio button in 'Community visibility'
-  async selectPublicCommunity() {
-    await this.page.locator("(//input[@type='radio' and @value='public'])[1]").check();
-    console.log('Selected Public community visibility.');
-  }
-
-  // Method to select the 'Restricted' radio button in 'Community visibility'
-  async selectRestrictedCommunity() {
-    await this.page.locator("(//input[@type='radio' and @value='public'])[2]").check();
-    console.log('Selected Restricted community visibility.');
-  }
-
-  // Method to click the 'Create community' button
-  async clickCreateCommunity() {
-    await this.page.locator('button.ui.icon.positive.left.labeled.button').click();
-    console.log(`Clicked the Create community button.`);
+    await this.page.click('#recordManagement > div > div:nth-child(1) > button');
   }
 
 // VERIFICATION ------------------------------------------------------------------------

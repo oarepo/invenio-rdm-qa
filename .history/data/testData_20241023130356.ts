@@ -32,7 +32,6 @@ export const testData = {
     familyName: () => faker.lorem.word(), // Function to generate a random family name
     recordDescription: () => faker.lorem.paragraph(), // Function to generate a random description
     communityName: () => faker.lorem.word(), // Function to generate a random community name
-    communityIdentifier: () => faker.lorem.sentence(), // Function to generate a random community identifier
 
     // Dynamic resource type - Select randomly from a list, ensuring it's not the same as the currently selected type
     resourceType: (currentlySelected: string | null): string => {
