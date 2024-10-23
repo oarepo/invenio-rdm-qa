@@ -67,13 +67,13 @@ export class newCommunity {
   }
 
   // Method to select the 'Public' radio button in 'Community visibility'
-  async selectPublicCommunity() {
+  async selectPublicCommunityRadio() {
     await this.page.locator("(//input[@type='radio' and @value='public'])[1]").check();
     console.log('Selected Public community visibility.');
   }
 
   // Method to select the 'Restricted' radio button in 'Community visibility'
-  async selectRestrictedCommunity() {
+  async selectRestrictedCommunityRadio() {
     await this.page.locator("(//input[@type='radio' and @value='public'])[2]").check();
     console.log('Selected Restricted community visibility.');
   }

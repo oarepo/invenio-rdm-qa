@@ -1,7 +1,7 @@
 import { test, expect } from '../utils/fixtures';
 import { UploadPage } from '../pages/uploadPage';
 import { testData } from '../data/testData';
-import { qase } from 'playwright-qase-reporter';
+import { qase } from 'playwright-qase-reporter'; 
 
 test.describe('Edit record', () => {
   let uploadPage: UploadPage;
@@ -25,9 +25,7 @@ test.describe('Edit record', () => {
     }
   });
 
-  test(qase(12, 'Edit Existing Record'), async () => {  // Qase test case ID: 
-    qase.fields({ 'severity': 'major', 'priority': 'high' }); // Qase test case values for severity and priority
-
+  test('Edit Existing Record [Qase ID: RDM-12]', async () => {
     // Navigate to 'My Dashboard'
     await uploadPage.navigateToMyDashboard();
   

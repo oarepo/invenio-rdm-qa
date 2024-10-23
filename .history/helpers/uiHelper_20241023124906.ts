@@ -37,7 +37,7 @@ export class UIHelper {
   }
 
   // Navigate to the new community page
-  async navigateToNewCommunity() {
+  async newCommunity() {
     await this.page.goto(urls.newCommunityURL);
     await this.page.waitForURL(urls.newCommunityURL);
   }
