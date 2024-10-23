@@ -17,26 +17,26 @@ export class UploadPage {
 
 // NAVIGATION --------------------------------------------------------------------------
 
-  // Navigate to the homepage page using the helper
+// Navigate to the homepage using the helper
   async navigateToHome() {
-    await this.uiHelper.navigateToHome();
+    await this.uiHelper.navigateToHome(); // Calls the helper's method to go to the homepage
   }
 
   // Navigate to the new upload section using the generic goto helper
   async navigateToUploadSection() {
-    await this.uiHelper.goto(urls.newUploadURL); 
+    await this.uiHelper.goto(urls.newUploadURL); // Uses the generic goto helper to go to the upload section
   }
 
-  // Navigate to the 'My Dashboard' page using the helper
+  // Navigate to the My Dashboard page using the helper
   async navigateToMyDashboard() {
-    await this.uiHelper.navigateToMyDashboard();
+    await this.uiHelper.navigateToMyDashboard(); // Uses the helper method for My Dashboard navigation
   }
 
   // Navigate to the detail of the first record using the helper
   async firstRecordDetail() {
-    await this.uiHelper.firstRecordDetail();
+    await this.uiHelper.firstRecordDetail(); // Uses the helper method for clicking the first record
   }
-
+  
 // FIELDS ------------------------------------------------------------------------------
 
   // Method to check 'Metadata-only record' checkbox

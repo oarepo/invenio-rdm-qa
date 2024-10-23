@@ -17,24 +17,27 @@ export class UploadPage {
 
 // NAVIGATION --------------------------------------------------------------------------
 
-  // Navigate to the homepage page using the helper
+  // Method to navigate directly to the homepage
   async navigateToHome() {
-    await this.uiHelper.navigateToHome();
+    await this.page.goto(urls.baseURL);
+    await this.page.waitForURL(urls.baseURL);
   }
 
-  // Navigate to the new upload section using the generic goto helper
+  // Method to navigate directly to the new upload section
   async navigateToUploadSection() {
-    await this.uiHelper.goto(urls.newUploadURL); 
+    await this.page.goto(urls.newUploadURL);
+    await this.page.waitForURL(urls.newUploadURL);
   }
 
-  // Navigate to the 'My Dashboard' page using the helper
+  // Method to navigate to the My Dashboard page
   async navigateToMyDashboard() {
-    await this.uiHelper.navigateToMyDashboard();
+    await this.page.getByRole('link', { name: 'My dashboard' }).click();
   }
 
-  // Navigate to the detail of the first record using the helper
+  // Method to navigate to the detail of a first record
   async firstRecordDetail() {
-    await this.uiHelper.firstRecordDetail();
+    await this.page.waitForSelector('//a[contains(@href, "/records/")][1]', { state: 'visible' });
+    await this.page.click('//a[contains(@href, "/records/")][1]');
   }
 
 // FIELDS ------------------------------------------------------------------------------
@@ -121,6 +124,7 @@ export class UploadPage {
     const reason = testData.randomEmbargoReason(); // Generate random reason
     await this.page.fill('textarea[name="access.embargo.reason"]', reason);
   }
+
 
 // BUTTONS -----------------------------------------------------------------------------
 

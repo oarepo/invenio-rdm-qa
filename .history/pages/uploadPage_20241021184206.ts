@@ -17,24 +17,27 @@ export class UploadPage {
 
 // NAVIGATION --------------------------------------------------------------------------
 
-  // Navigate to the homepage page using the helper
+  // Method to navigate directly to the homepage
   async navigateToHome() {
-    await this.uiHelper.navigateToHome();
+    await this.page.goto(urls.baseURL);
+    await this.page.waitForURL(urls.baseURL);
   }
 
-  // Navigate to the new upload section using the generic goto helper
+  // Method to navigate directly to the new upload section
   async navigateToUploadSection() {
-    await this.uiHelper.goto(urls.newUploadURL); 
+    await this.page.goto(urls.newUploadURL);
+    await this.page.waitForURL(urls.newUploadURL);
   }
 
-  // Navigate to the 'My Dashboard' page using the helper
+  // Method to navigate to the My Dashboard page
   async navigateToMyDashboard() {
-    await this.uiHelper.navigateToMyDashboard();
+    await this.page.getByRole('link', { name: 'My dashboard' }).click();
   }
 
-  // Navigate to the detail of the first record using the helper
+  // Method to navigate to the detail of a first record
   async firstRecordDetail() {
-    await this.uiHelper.firstRecordDetail();
+    await this.page.waitForSelector('//a[contains(@href, "/records/")][1]', { state: 'visible' });
+    await this.page.click('//a[contains(@href, "/records/")][1]');
   }
 
 // FIELDS ------------------------------------------------------------------------------
@@ -108,18 +111,6 @@ export class UploadPage {
     const iframeElement = this.page.frameLocator('iframe[id^="tiny-react"]'); // Flexible selector for the iframe (ID starting with 'tiny-react')
     const body = iframeElement.first().locator('body#tinymce'); // Select the first iframe (if there are multiple) and then locate the body element inside the iframe
     await body.fill(description);
-  }
-
-  // Method to set the 'Embargo until' date field
-  async setEmbargoUntilDate() {
-    const embargoDate = testData.getDatePlusOne();  // Get today's date plus one day in YYYY-MM-DD format
-    await this.page.fill('input[name="access.embargo.until"]', embargoDate);
-  }
-
-  // Method to fill the embargo reason with random text
-  async fillEmbargoReason() {
-    const reason = testData.randomEmbargoReason(); // Generate random reason
-    await this.page.fill('textarea[name="access.embargo.reason"]', reason);
   }
 
 // BUTTONS -----------------------------------------------------------------------------

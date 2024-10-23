@@ -17,32 +17,30 @@ export class UploadPage {
 
 // NAVIGATION --------------------------------------------------------------------------
 
-  // Navigate to the homepage page using the helper
+  // Method to navigate directly to the homepage
   async navigateToHome() {
-    await this.uiHelper.navigateToHome();
+    await this.page.goto(urls.baseURL);
+    await this.page.waitForURL(urls.baseURL);
   }
 
-  // Navigate to the new upload section using the generic goto helper
+  // Method to navigate directly to the new upload section
   async navigateToUploadSection() {
-    await this.uiHelper.goto(urls.newUploadURL); 
+    await this.page.goto(urls.newUploadURL);
+    await this.page.waitForURL(urls.newUploadURL);
   }
 
-  // Navigate to the 'My Dashboard' page using the helper
+  // Method to navigate to the My Dashboard page
   async navigateToMyDashboard() {
-    await this.uiHelper.navigateToMyDashboard();
+    await this.page.getByRole('link', { name: 'My dashboard' }).click();
   }
 
-  // Navigate to the detail of the first record using the helper
+  // Method to navigate to the detail of a first record
   async firstRecordDetail() {
-    await this.uiHelper.firstRecordDetail();
+    await this.page.waitForSelector('//a[contains(@href, "/records/")][1]', { state: 'visible' });
+    await this.page.click('//a[contains(@href, "/records/")][1]');
   }
 
 // FIELDS ------------------------------------------------------------------------------
-
-  // Method to check 'Metadata-only record' checkbox
-  async checkFirstMetadataOnlyCheckbox() {
-    await this.page.click('(//div[contains(@class, "ui checkbox")])[1]//input[@type="checkbox"]');
-  }
 
    // Method to upload a random file using the helper
    async uploadRandomFile() {
@@ -110,18 +108,6 @@ export class UploadPage {
     await body.fill(description);
   }
 
-  // Method to set the 'Embargo until' date field
-  async setEmbargoUntilDate() {
-    const embargoDate = testData.getDatePlusOne();  // Get today's date plus one day in YYYY-MM-DD format
-    await this.page.fill('input[name="access.embargo.until"]', embargoDate);
-  }
-
-  // Method to fill the embargo reason with random text
-  async fillEmbargoReason() {
-    const reason = testData.randomEmbargoReason(); // Generate random reason
-    await this.page.fill('textarea[name="access.embargo.reason"]', reason);
-  }
-
 // BUTTONS -----------------------------------------------------------------------------
 
   // Method to click 'Save' button
@@ -167,12 +153,6 @@ export class UploadPage {
   // Method to click the 'Discard changes' button
   async clickDiscardChanges() {
     await this.page.click("//div[@id='rdm-deposit-form']//button[contains(text(), 'Discard changes')]");
-  }
-
-  // Method to check the 'Apply an embargo' checkbox
-  async checkEmbargoCheckbox() {
-    const checkbox = await this.page.locator('div[data-testid="embargo-checkbox-component"] input[type="checkbox"]');
-    await checkbox.click(); // Clicks the checkbox to check/uncheck it
   }
 
   // Method to click the 'Publish' button on the confirmation dialog

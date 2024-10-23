@@ -17,7 +17,7 @@ export class UploadPage {
 
 // NAVIGATION --------------------------------------------------------------------------
 
-  // Navigate to the homepage page using the helper
+  // Navigate to the homepage using the helper
   async navigateToHome() {
     await this.uiHelper.navigateToHome();
   }
@@ -27,7 +27,7 @@ export class UploadPage {
     await this.uiHelper.goto(urls.newUploadURL); 
   }
 
-  // Navigate to the 'My Dashboard' page using the helper
+  // Navigate to the My Dashboard page using the helper
   async navigateToMyDashboard() {
     await this.uiHelper.navigateToMyDashboard();
   }

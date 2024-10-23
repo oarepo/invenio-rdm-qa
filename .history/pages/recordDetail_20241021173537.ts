@@ -28,10 +28,23 @@ export class RecordDetail {
     await this.page.getByRole('link', { name: 'My dashboard' }).click();
   }
 
-  // Method to navigate to the detail of a first record
+  // Method to navigate to the detail of the first record
   async firstRecordDetail() {
     await this.page.waitForSelector('//a[contains(@href, "/records/")][1]', { state: 'visible' });
     await this.page.click('//a[contains(@href, "/records/")][1]');
+  }
+
+// FIELDS ------------------------------------------------------------------------------  
+
+  // Method to click the 'Style' dropdown and select a style
+  async selectStyle(style: string) {
+    await this.page.getByLabel('Style').locator('i').click();
+    await this.page.getByText(style).click();
+  }
+
+  // Method to select the export option
+  async selectExportOption(option: string) {
+    await this.page.getByRole('option', { name: option }).dblclick();
   }
 
 // BUTTONS -----------------------------------------------------------------------------
@@ -41,9 +54,9 @@ export class RecordDetail {
     await this.page.click('#recordManagement > div > div:nth-child(1) > button');
   }
 
-  // TRY THIS 
+  // Method to click the 'Edit' button (alternative approach)
   async clickEdit2() {
-    await this.page.getByRole('button', { name: 'Edit' }).click(); // Adjust 'Edit' to the appropriate button name
+    await this.page.getByRole('button', { name: 'Edit' }).click();
   }
 
   // Method to click the 'New version' button
@@ -51,7 +64,7 @@ export class RecordDetail {
     await this.page.click('#recordManagement > div > div:nth-child(2) > span > button');
   }
 
-  // TRY THIS 
+  // Method to click the 'New version' button (alternative approach)
   async clickNewVersion2() {
     await this.page.getByRole('button', { name: 'New version' }).click();
   }
@@ -61,11 +74,22 @@ export class RecordDetail {
     await this.page.click('//div[@id="recordManagement"]//button[contains(@class, "ui") and contains(text(), "Share")]');
   }
 
-  // TRY THIS 
+  // Method to click the 'Share' button (alternative approach)
   async clickShare2() {
     await this.page.getByRole('button', { name: 'Share' }).click();
   }
 
+   // Method to click the 'Export selection' button
+   async clickExportSelection() {
+    await this.page.getByLabel('Export selection').locator('i').click();
+  }
+
+   // Method to click the 'Export' button and wait for the download
+   async clickExportButton() {
+    const downloadPromise = this.page.waitForEvent('download');
+    await this.page.getByRole('button', { name: 'Export' }).click();
+    return downloadPromise;
+  } 
 
 // VERIFICATION ------------------------------------------------------------------------
 
