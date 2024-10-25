@@ -26,7 +26,7 @@ test.describe('Edit record', () => {
   });
 
   test(qase(12, 'Edit Existing Record'), async () => {  // Qase test case ID: 
-    qase.fields({ severity: 'major', priority: 'high' }); // Qase test case values for severity and priority
+    qase.fields({ 'severity': 'major', 'priority': 'high' }); // Qase test case values for severity and priority
 
     // Navigate to 'My Dashboard'
     await uploadPage.navigateToMyDashboard();
