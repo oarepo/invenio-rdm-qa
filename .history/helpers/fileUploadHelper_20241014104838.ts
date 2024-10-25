@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
-import * as fs from 'fs'; // A Node.js module for working with files and directories (reading, writing, deleting files, etc.).
-import * as path from 'path'; // A Node.js module for working with file and directory paths, allowing dynamic and absolute path creation.
+import * as fs from 'fs';
+import * as path from 'path';
 
 // Helper provides utility methods for uploading files during tests
 

@@ -71,7 +71,7 @@ export class UIHelper {
   }
 
   // Click an element by its text content with error handling
-  async clickByText(text: string, retries: number = 3) { // set number of retries
+  async clickByText(text: string, retries: number = 3) {
     for (let attempt = 0; attempt < retries; attempt++) {
       try {
         await this.page.click(`text=${text}`);
@@ -179,6 +179,6 @@ export class UIHelper {
     if (!isVisible) {
       await this.captureScreenshotOnError(`assertTextVisible_${text}`);
     }
-    expect(isVisible).toBe(true);
+    expect(isVisible).toBe(true, `Expected text "${text}" to be visible.`);
   }
 }
