@@ -25,20 +25,20 @@ test.describe('Edit record', () => {
     }
   });
 
-  test(qase(57, 'Edit Existing Record'), async () => {  
+  test(qase(12, 'Edit Existing Record'), async () => {  
     const qaseData = {
-      case_id: 57,
+      case_id: 12,
       severity: 'major',  // Explicit string value for severity
       priority: 'high',   // Explicit string value for priority
-      description: 'description test',    // Set empty string to avoid null values
-      preconditions: 'this is a precondition parameter',  // Set empty string to avoid null values
-      postconditions: 'this is a postcondition parameter',  // Set empty string to avoid null values
+      description: '',    // Set empty string to avoid null values
+      preconditions: '',  // Set empty string to avoid null values
+      postconditions: '',  // Set empty string to avoid null values
       duration: 0, // Duration to be set after execution
       status: 'blocked',  // Initial status to be updated at runtime
       environment: { browser: 'Chrome', resolution: '1920x1080' },
       attachments: [],  // To store paths of any failure screenshots
       automated: true,  // Marks as automated test
-      tags: ['E2E', 'UI'],  // Tags for categorization
+      tags: ['edit', 'record', 'ui'],  // Tags for categorization
     };
 
     // Debug log to check the data being sent to Qase

@@ -18,9 +18,9 @@ test.describe('New Upload', () => {
     }
   });
 
-  test(qase(58, 'Upload a file successfully'), async () => {  
+  test(qase(7, 'Upload a file successfully'), async () => {  
     const qaseData = {
-      case_id: 58,
+      case_id: 7,
       severity: 'major',  // Explicit string value for severity
       priority: 'high',   // Explicit string value for priority
       description: '',    // Set empty string to avoid null values

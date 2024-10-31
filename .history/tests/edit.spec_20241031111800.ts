@@ -25,9 +25,9 @@ test.describe('Edit record', () => {
     }
   });
 
-  test(qase(57, 'Edit Existing Record'), async () => {  
+  test(qase(12, 'Edit Existing Record'), async () => {  
     const qaseData = {
-      case_id: 57,
+      case_id: 12,
       severity: 'major',  // Explicit string value for severity
       priority: 'high',   // Explicit string value for priority
       description: 'description test',    // Set empty string to avoid null values
