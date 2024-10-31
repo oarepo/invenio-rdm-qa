@@ -32,9 +32,9 @@ test.describe('Edit record', () => {
       priority: 'low',   // Explicit string value for priority
       description: 'description test',    // Set empty string to avoid null values
       preconditions: 'this is a precondition parameter',  // Set empty string to avoid null values
-      postconditions: '',  // Set empty string to avoid null values
+      postconditions: 'this is a postcondition parameter',  // Set empty string to avoid null values
       duration: 0, // Duration to be set after execution
-      environment: { browser: 'Chrome', resolution: '1920x1080', os: 'OS X' },
+      environment: { browser: 'Chrome', resolution: '1920x1080' },
      // attachments: [],  // To store paths of any failure screenshots
      // automated: true,  // Marks as automated test
      // tags: ['E2E', 'UI'],  // Tags for categorization
