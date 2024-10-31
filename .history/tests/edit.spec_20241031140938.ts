@@ -26,19 +26,22 @@ test.describe('Edit record', () => {
   });
 
   test(qase(57, 'Edit Existing Record'), async () => {  
-   // const qaseData = {
-     // case_id: 57,
-     // severity: 'low',  // Explicit string value for severity
-     // priority: 'low',   // Explicit string value for priority
-     // description: '',    // Set empty string to avoid null values
-     // preconditions: '',  // Set empty string to avoid null values
-     // postconditions: '',  // Set empty string to avoid null values
-     // duration: 0, // Duration to be set after execution
-     // environment: { browser: 'Chrome', resolution: '1920x1080', os: 'OS X' },
+    const qaseData = {
+      case_id: 57,
+      severity: 'low',  // Explicit string value for severity
+      priority: 'low',   // Explicit string value for priority
+      description: '',    // Set empty string to avoid null values
+      preconditions: '',  // Set empty string to avoid null values
+      postconditions: '',  // Set empty string to avoid null values
+      duration: 0, // Duration to be set after execution
+      environment: { browser: 'Chrome', resolution: '1920x1080', os: 'OS X' },
      // attachments: [],  // To store paths of any failure screenshots
      // automated: true,  // Marks as automated test
      // tags: ['E2E', 'UI'],  // Tags for categorization
-   // };
+    };
+
+    // Debug log to check the data being sent to Qase
+    console.log("Qase Payload:", JSON.stringify(qaseData));
 
     // Navigate to 'My Dashboard'
     await uploadPage.navigateToMyDashboard();

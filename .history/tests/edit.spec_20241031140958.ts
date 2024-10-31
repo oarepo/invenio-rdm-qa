@@ -26,7 +26,7 @@ test.describe('Edit record', () => {
   });
 
   test(qase(57, 'Edit Existing Record'), async () => {  
-   // const qaseData = {
+    const qaseData = {
      // case_id: 57,
      // severity: 'low',  // Explicit string value for severity
      // priority: 'low',   // Explicit string value for priority
@@ -38,7 +38,10 @@ test.describe('Edit record', () => {
      // attachments: [],  // To store paths of any failure screenshots
      // automated: true,  // Marks as automated test
      // tags: ['E2E', 'UI'],  // Tags for categorization
-   // };
+    };
+
+    // Debug log to check the data being sent to Qase
+    console.log("Qase Payload:", JSON.stringify(qaseData));
 
     // Navigate to 'My Dashboard'
     await uploadPage.navigateToMyDashboard();

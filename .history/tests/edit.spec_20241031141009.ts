@@ -40,6 +40,9 @@ test.describe('Edit record', () => {
      // tags: ['E2E', 'UI'],  // Tags for categorization
    // };
 
+    // Debug log to check the data being sent to Qase
+    console.log("Qase Payload:", JSON.stringify(qaseData));
+
     // Navigate to 'My Dashboard'
     await uploadPage.navigateToMyDashboard();
   
