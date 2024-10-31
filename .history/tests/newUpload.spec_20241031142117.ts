@@ -25,13 +25,7 @@ test.describe('New Upload', () => {
       priority: '',   // Explicit string value for priority
       description: '',    // Set empty string to avoid null values
       preconditions: '',  // Set empty string to avoid null values
-      postconditions: '',  // Set empty string to avoid null values
-      duration: 0,        // To be set after execution
-      status: 'blocked',   // Initial status to be updated later
-      environment: { browser: 'Chrome', resolution: '1920x1080', os: 'MAC OSX' },
-      attachments: [],     // To store any screenshot paths
-      automated: true,    // Marks as an automated test
-      tags: ['E2E', 'Upload'],  // Tags for categorization
+      postconditions: ''  // Set empty string to avoid null values
     };
 
     // Debug log to check the data being sent to Qase

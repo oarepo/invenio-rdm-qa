@@ -19,23 +19,6 @@ test.describe('New Upload', () => {
   });
 
   test(qase(58, 'Upload a file successfully'), async () => {  
-    const qaseData = {
-      case_id: 58,
-      severity: '',  // Explicit string value for severity
-      priority: '',   // Explicit string value for priority
-      description: '',    // Set empty string to avoid null values
-      preconditions: '',  // Set empty string to avoid null values
-      postconditions: '',  // Set empty string to avoid null values
-      duration: 0,        // To be set after execution
-      status: 'blocked',   // Initial status to be updated later
-      environment: { browser: 'Chrome', resolution: '1920x1080', os: 'MAC OSX' },
-      attachments: [],     // To store any screenshot paths
-      automated: true,    // Marks as an automated test
-      tags: ['E2E', 'Upload'],  // Tags for categorization
-    };
-
-    // Debug log to check the data being sent to Qase
-    console.log("Qase Payload:", JSON.stringify(qaseData));
 
     // Fill in the record details
     await uploadPage.fillTitle(testData.upload.recordTitle());
