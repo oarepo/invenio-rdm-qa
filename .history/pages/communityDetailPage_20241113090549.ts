@@ -1,0 +1,128 @@
+import { Page, expect } from '@playwright/test';
+import { UIHelper } from '../helpers/uiHelper';
+import { testData } from '../data/testData';
+import { urls } from '../data/urls';
+
+export class CommunityDetail {
+  private uiHelper: UIHelper;
+  public uploadedTitle: string;
+
+  constructor(private page: Page) {
+    this.uiHelper = new UIHelper(page);
+    this.uploadedTitle = testData.upload.recordTitle();
+  }
+
+// NAVIGATION --------------------------------------------------------------------------
+
+  // Navigate to the homepage page using the helper
+  async navigateToHome() {
+    await this.uiHelper.navigateToHome();
+  }
+
+  // Navigate to the 'Communities' page using the helper
+  async navigateToCommunities() {
+    await this.uiHelper.goto(urls.communitiesURL); 
+  }
+
+  // Navigate to the 'Communities' page using the helper
+  async navigateToNewCommunities() {
+    await this.uiHelper.goto(urls.newCommunityURL); 
+  }
+
+  // Navigate to the 'My Dashboard' page using the helper
+  async navigateToMyDashboard() {
+    await this.uiHelper.navigateToMyDashboard();
+  }
+
+  // Navigate to the detail of the first record using the helper
+  async firstRecordDetail() {
+    await this.uiHelper.firstRecordDetail();
+  }
+
+// FIELDS ------------------------------------------------------------------------------  
+
+ // Method to fill in the 'Community name' field (by faker)
+ async fillCommunityName() {
+    const communityName = testData.upload.communityName();
+    await this.page.locator('#metadata\\.title').fill(communityName);
+    console.log(`Filled the community name field with: ${communityName}`);
+    return communityName;
+  }
+
+  // Method to fill in the 'Identifier' field (by Faker)
+  async fillCommunityIdentifier() {
+    const communityIdentifier = testData.upload.communityIdentifier(); // Get the generated slug
+    await this.page.locator('#slug').fill(communityIdentifier); // Fill the slug field
+    console.log(`Filled the community identifier field with: ${communityIdentifier}`);
+  }
+
+  // Method to edit the 'Community name' by appending '_EDITED'
+  async editCommunityName() {
+    // Locate the 'Community name' field and get the current value
+    const nameField = this.page.locator('#metadata\\.title');
+    const currentName = await nameField.inputValue();
+
+    // Append '_EDITED' to the existing name
+    const editedName = `${currentName}_EDITED`;
+
+    // Fill the field with the new name
+    await nameField.fill(editedName);
+
+    console.log(`Updated the community name to: ${editedName}`);
+    return editedName;
+  }
+
+
+// BUTTONS -----------------------------------------------------------------------------
+
+  // Method to click the 'New community' button
+  async clickNewCommunity() {
+    await this.page.getByRole('button', { name: 'New community' }).click();
+ // await this.page.locator('a.ui.icon.left.labeled.positive.button').click();
+  }
+
+  // Method to select the 'Public' radio button in 'Community visibility'
+  async selectPublicCommunity() {
+    await this.page.locator("(//input[@type='radio' and @value='public'])[1]").check();
+    console.log('Selected Public community visibility.');
+  }
+
+  // Method to select the 'Restricted' radio button in 'Community visibility'
+  async selectRestrictedCommunity() {
+    await this.page.locator("(//input[@type='radio' and @value='public'])[2]").check();
+    console.log('Selected Restricted community visibility.');
+  }
+
+  // Method to click the 'Create community' button
+  async clickCreateCommunity() {
+    await this.page.locator('button.ui.icon.positive.left.labeled.button').click();
+    console.log(`Clicked the Create community button.`);
+  }
+
+// VERIFICATION ------------------------------------------------------------------------
+
+  // Method for implicit waiting (2 seconds)
+  async waitForTwoSeconds() {
+    await this.page.waitForTimeout(2000); // Waits for 2 seconds
+  }
+
+  // Method to get the community name ('Settings' menu in the community detail)
+  getCommunityName() {
+    return this.page.locator('h1.ui.medium.header.mb-0');
+  }
+
+  // Method to check name of the first community in 'Communities' list
+  async getFirstCommunityName() {
+    return this.page.locator('.content .header').first();  }
+
+  // Method to verify that the community name matches the generated name
+  async verifyCommunityName(expectedCommunityName: string) {
+    const communityNameLocator = this.getCommunityName();
+    const actualCommunityName = await communityNameLocator.textContent();
+
+    // Assertion to check the community name
+    expect(actualCommunityName).not.toBeNull();
+    await expect(communityNameLocator).toHaveText(expectedCommunityName);
+    console.log(`Verified the community name is present on the page and matches: ${expectedCommunityName}`);
+  }
+}
