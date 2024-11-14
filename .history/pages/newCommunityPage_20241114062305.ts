@@ -82,6 +82,18 @@ export class NewCommunity {
     console.log(`Clicked the "Create community" button.`);
   }
 
+  // Method to click the 'Select a community' button
+  async clickSelectCommunityButton() {
+    await this.page.locator('button[name="setting"]').click();
+    console.log('Clicked the "Select a community" button.');
+  }
+
+  // Method to click the 'Submit for review' button
+  async clickSubmitReviewButton() {
+    await this.page.locator('button[name="SubmitReview"]').click();
+    console.log('Clicked the "Submit for review" button.');
+  }
+
 // VERIFICATION ------------------------------------------------------------------------
 
   // Method to get the community name ('Settings' menu in the community detail)

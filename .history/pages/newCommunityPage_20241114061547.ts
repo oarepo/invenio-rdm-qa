@@ -61,7 +61,7 @@ export class NewCommunity {
   // Method to click the 'New community' button
   async clickNewCommunity() {
     await this.page.getByRole('button', { name: 'New community' }).click();
-    console.log('Clicked "New community" button.')
+ // await this.page.locator('a.ui.icon.left.labeled.positive.button').click();
   }
 
   // Method to select the 'Public' radio button in 'Community visibility'
@@ -79,7 +79,13 @@ export class NewCommunity {
   // Method to click the 'Create community' button
   async clickCreateCommunity() {
     await this.page.locator('button.ui.icon.positive.left.labeled.button').click();
-    console.log(`Clicked the "Create community" button.`);
+    console.log(`Clicked the Create community button.`);
+  }
+
+  // Method to click the "Submit for review" button
+  async clickSubmitReviewButton() {
+    await this.page.locator('button[name="SubmitReview"]').click();
+    console.log('Clicked the "Submit for review" button.');
   }
 
 // VERIFICATION ------------------------------------------------------------------------

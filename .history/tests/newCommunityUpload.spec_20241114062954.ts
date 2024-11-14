@@ -1,15 +1,16 @@
 import { test, expect } from '../utils/fixtures';
-import { UploadPage } from '../pages/newUploadPage';
+import { UploadPage } from '../pages/newRecordPage';
 import { testData } from '../data/testData';
 import { qase } from 'playwright-qase-reporter';
+import { NewCommunity } from '../pages/newCommunityPage';
 
 test.describe('New Upload', () => {
   let uploadPage: UploadPage;
-  let currentlySelectedType: string | null = null; // Track the currently selected resource type
+  let currentlySelectedType: string | null = null;
 
   test.beforeEach(async ({ loggedInPage }) => {
-    uploadPage = new UploadPage(loggedInPage); // Use the logged-in page
-    await uploadPage.navigateToUploadSection(); // Navigate to the upload section
+    uploadPage = new UploadPage(loggedInPage);
+    await uploadPage.navigateToUploadSection();
   });
 
   test.afterEach(async ({ page }, testInfo) => {
@@ -18,7 +19,7 @@ test.describe('New Upload', () => {
     }
   });
 
-  test(qase(58, 'Upload a file successfully'), async () => {  
+  test(qase(8, 'New Community Upload '), async () => {  
 
     // Fill in the record details
     await uploadPage.fillTitle(testData.upload.recordTitle());
