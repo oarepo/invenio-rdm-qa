@@ -1,5 +1,5 @@
 // Direct URLS for a quick navigation
-const baseURL = process.env.INVENIO_BASE_URL ? process.env.INVENIO_BASE_URL : 'https://127.0.0.1:5000/' // 'https://inveniordm.web.cern.ch/'
+const baseURL = process.env.INVENIO_BASE_URL ? process.env.INVENIO_BASE_URL : 'https://127.0.0.1:5000/' //'https://inveniordm.web.cern.ch/'
 
 export const urls = {
     baseURL,
