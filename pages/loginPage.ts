@@ -36,5 +36,4 @@ export class LoginPage {
     await this.uiHelper.clickByLabel('My account');
     await this.uiHelper.clickByRole('menuitem', ' Profile');
   }
-
 }
