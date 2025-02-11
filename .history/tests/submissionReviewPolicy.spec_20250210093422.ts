@@ -9,7 +9,7 @@ test.describe('Communities', () => {
   let uploadPage: UploadPage;
   let newCommunity: NewCommunity;
   let communityDetail: CommunityDetail;
-  let currentlySelectedType: string | null = null;
+  let currentlySelectedType: string | null = null; // Track the currently selected resource type
 
   test.beforeEach(async ({ loggedInPage, createNewCommunity }) => {
     uploadPage = new UploadPage(loggedInPage);

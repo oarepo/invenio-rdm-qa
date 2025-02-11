@@ -1,16 +1,19 @@
 import { test, expect } from '../utils/fixtures';
 import { qase } from 'playwright-qase-reporter';
+import { NewCommunity } from '../pages/newCommunityPage';
 import { RecordDetail } from '../pages/recordDetailPage';
 import { CommunityDetail } from '../pages/communityDetailPage';
 import { LoginPage } from '../pages/loginPage';
 
 test.describe('Embargo', () => {
   let loginPage: LoginPage;
+  let newCommunity: NewCommunity;
   let recordDetailPage: RecordDetail;
   let communityDetail: CommunityDetail;
 
   test.beforeEach(async ({ loggedInPage, uploadPage, createCommunityAndUploadFile }) => {
     loginPage = new LoginPage(loggedInPage);
+    newCommunity = new NewCommunity(loggedInPage);
     communityDetail = new CommunityDetail(loggedInPage);
     recordDetailPage = new RecordDetail(loggedInPage);
   });

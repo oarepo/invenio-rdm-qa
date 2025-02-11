@@ -1,4 +1,5 @@
 import { test, expect } from '../utils/fixtures';
+import { UploadPage } from '../pages/newUploadPage';
 import { qase } from 'playwright-qase-reporter';
 import { NewCommunity } from '../pages/newCommunityPage';
 import { Communities } from '../pages/communitiesPage';

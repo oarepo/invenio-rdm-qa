@@ -12,6 +12,7 @@ test.describe('Search and Filter', () => {
   let homePage: HomePage;
   let communityDetailPage: CommunityDetail;
   let recordDetailPage: RecordDetail;
+  let currentlySelectedType: string | null = null;
 
   test.beforeEach(async ({ loggedInPage, createCommunityAndUploadFiles }) => {
     uploadPage = new UploadPage(loggedInPage);
@@ -27,14 +28,18 @@ test.describe('Search and Filter', () => {
     }
   });
 
-  // Test design: https://app.qase.io/case/RDM-38
-  test(qase(38, 'Filter - Access status'), async () => {  
+  // Test design: https://app.qase.io/case/RDM-39
+  test(qase(39, 'Filter - Resource types'), async () => {  
     await communityDetailPage.navigateToCommunities();
     await communityDetailPage.navigateToFirstCommunity();
+
 
     // Verify the number of found results (3)
     const isThreeResultsPresent = await communityDetailPage.isNumberPresent(3);
     expect(isThreeResultsPresent).toBeTruthy();
+
+    // Check 'Resource types' -> 'Image' checkbox
+    await communityDetailPage.clickAccessStatusCheckbox('Image');
 
     // Array of checkbox labels to cycle through
     const checkboxLabels = ['Embargoed', 'Metadata-only', 'Open'];
@@ -54,5 +59,12 @@ test.describe('Search and Filter', () => {
       const isThreeResultsPresentAfterUncheck = await communityDetailPage.isNumberPresent(3);
       expect(isThreeResultsPresentAfterUncheck).toBeTruthy();
     }
+      // Check 'Open' and 'Embargoed'
+      await communityDetailPage.clickAccessStatusCheckbox('Open');
+      await communityDetailPage.clickAccessStatusCheckbox('Embargoed');
+
+      // Verify the number of found results (2)
+      const isTwoResultsPresentAfterUncheck = await communityDetailPage.isNumberPresent(2);
+      expect(isTwoResultsPresentAfterUncheck).toBeTruthy();
   });
 });

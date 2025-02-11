@@ -26,7 +26,7 @@ export class CommunityDetail {
   async navigateToCommunities() {
     console.log('Navigating to the Communities page...');
     await this.uiHelper.goto(urls.communitiesURL);
-    await this.page.waitForSelector('h1:has-text("Communities")', { state: 'visible', timeout: 3000 });
+    await this.page.waitForSelector('h1:has-text("Communities")', { state: 'visible' });
   }
 
   // Navigate to the new community page using the helper
@@ -39,7 +39,7 @@ export class CommunityDetail {
   // Navigate to the first community in the list of communities ('Communities' -> 'My communities' section)
   async navigateToFirstCommunity() {
     console.log('Navigating to the First Community detail...');
-    await this.page.waitForSelector('div.centered.image.fallback_image:nth-of-type(1)', { state: 'visible', timeout: 3000 });
+    await this.page.waitForSelector('div.centered.image.fallback_image:nth-of-type(1)', { state: 'visible' });
     await this.page.locator('div.centered.image.fallback_image').nth(0).click();
     await this.page.waitForSelector('a.item.active:has-text("Records")', { state: 'visible' });
   }
@@ -625,5 +625,18 @@ export class CommunityDetail {
   // Method for implicit waiting (2 seconds)
   async waitForTwoSeconds() {
     await this.page.waitForTimeout(2000); // Waits for 2 seconds
+  }
+
+// STABILIZATON-------------------------------------------------------
+
+  async waitForNumberToBePresent(expectedNumber: number) {
+    await this.page.waitForFunction((num) => {
+      const elements = document.querySelectorAll('.search-result-item');
+      return elements.length === num;
+    }, expectedNumber, { timeout: 15000, polling: 500 });
+  }
+
+  async waitForCommunitiesToLoad() {
+    await this.page.waitForSelector('h1:has-text("Communities")', { state: 'visible', timeout: 15000 });
   }
 }

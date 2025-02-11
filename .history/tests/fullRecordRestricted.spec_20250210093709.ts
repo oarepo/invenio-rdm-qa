@@ -1,5 +1,6 @@
 import { test, expect } from '../utils/fixtures';
 import { qase } from 'playwright-qase-reporter';
+import { NewCommunity } from '../pages/newCommunityPage';
 import { RecordDetail } from '../pages/recordDetailPage';
 import { CommunityDetail } from '../pages/communityDetailPage';
 import { LoginPage } from '../pages/loginPage';

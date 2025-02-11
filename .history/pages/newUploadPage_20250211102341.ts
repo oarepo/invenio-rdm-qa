@@ -482,4 +482,15 @@ export class UploadPage {
     const isVisible = await elementLocator.isVisible();
     return isVisible;
   }
+
+
+// STABILIZATION -----------------------------------------------------------------------
+
+  async waitForFileUploadInput() {
+  await this.page.waitForSelector('input[type="file"]', { state: 'attached', timeout: 10000 });
+  }
+
+  async waitForCommunitiesToLoad() {
+    await this.page.waitForSelector('h1:has-text("Communities")', { state: 'visible', timeout: 15000 });
+  }
 }

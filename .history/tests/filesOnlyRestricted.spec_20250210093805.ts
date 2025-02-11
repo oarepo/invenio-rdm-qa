@@ -1,16 +1,19 @@
 import { test, expect } from '../utils/fixtures';
 import { qase } from 'playwright-qase-reporter';
+import { NewCommunity } from '../pages/newCommunityPage';
 import { RecordDetail } from '../pages/recordDetailPage';
 import { CommunityDetail } from '../pages/communityDetailPage';
 import { LoginPage } from '../pages/loginPage';
 
 test.describe('Embargo', () => {
   let loginPage: LoginPage;
+  let newCommunity: NewCommunity;
   let recordDetailPage: RecordDetail;
   let communityDetail: CommunityDetail;
 
   test.beforeEach(async ({ loggedInPage, uploadPage, createCommunityAndUploadFile }) => {
     loginPage = new LoginPage(loggedInPage);
+    newCommunity = new NewCommunity(loggedInPage);
     communityDetail = new CommunityDetail(loggedInPage);
     recordDetailPage = new RecordDetail(loggedInPage);
   });
@@ -21,8 +24,8 @@ test.describe('Embargo', () => {
     }
   });
 
-  // Test design: https://app.qase.io/case/RDM-26
-  test(qase(26, 'Full Record Restricted'), async ({ uploadPage }) => {
+  // Test design: https://app.qase.io/case/RDM-27
+  test(qase(27, 'Files Only Restricted'), async ({ uploadPage }) => {
 
     // Navigate to the edit menu of the first record within the created community
     await uploadPage.waitForTwoSeconds();
@@ -31,18 +34,13 @@ test.describe('Embargo', () => {
     await recordDetailPage.clickEdit();
 
     // Set the record as 'Restricted' and publish
-    await uploadPage.clickFullRecordRestrictedButton();
+    await uploadPage.clickFilesOnlyRestrictedButton();
     await uploadPage.clickPublish();
     await uploadPage.clickPublishOnConfirmation();
 
-    // Verify if the 'Restricted' status label is present
-    await recordDetailPage.waitForTwoSeconds();
-    const restrictedLabelVisible = await recordDetailPage.isRestrictedLabelPresent();
-    expect(restrictedLabelVisible).toBe(true);
-
-    // Verify if the 'Record Access Status' section is present
-    const recordAccessStatusSectionVisible = await recordDetailPage.isRecordAccessStatusSectionPresent();
-    expect(recordAccessStatusSectionVisible).toBe(true);
+    // Verify if the 'Record Access Status' section is present (under files)
+    const restrictedMessageVisible = await recordDetailPage.checkRestrictedMessagePresence();
+    expect(restrictedMessageVisible).toBe(true);
 
     // Logout from the Invenio RDM
     await loginPage.logout();
@@ -52,7 +50,12 @@ test.describe('Embargo', () => {
     await communityDetail.navigateToFirstCommunity();
 
     // Verify if the 'Restricted' record is not present
-    const noRecordsFound = await communityDetail.verifyRestrictedRecordNotPresent();
-    expect(noRecordsFound).toBe(true);
+   // const restrictedLabel = await communityDetail.verifyRestrictedLabel();
+   // expect(restrictedLabel).toBe(true);
+
+    // Verify if the 'Restricted' message is present in the detail or the record
+    await recordDetailPage.firstRecordDetail();
+    const restrictedMessage = await recordDetailPage.checkRestrictedMessagePresence();
+    expect(restrictedMessage).toBe(true);
   });
 });

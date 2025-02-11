@@ -451,7 +451,11 @@ export class UploadPage {
   // Method to verify the presence of the confirmation element ('Submitted' status in record request)
   async verifySubmittedStatusPresence() {
     const submittedElement = this.page.locator('i.clock.outline.icon + span:has-text("Submitted")');
+  
+    // Wait for the element to appear in the DOM and be visible
     await submittedElement.waitFor({ state: 'visible', timeout: 5000 });
+  
+    // Check if the element is visible
     const isVisible = await submittedElement.isVisible();
     return isVisible;
   }

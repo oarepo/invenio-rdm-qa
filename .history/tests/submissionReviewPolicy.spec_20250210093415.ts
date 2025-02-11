@@ -9,7 +9,7 @@ test.describe('Communities', () => {
   let uploadPage: UploadPage;
   let newCommunity: NewCommunity;
   let communityDetail: CommunityDetail;
-  let currentlySelectedType: string | null = null;
+  let currentlySelectedType: string | null = null; // Track the currently selected resource type
 
   test.beforeEach(async ({ loggedInPage, createNewCommunity }) => {
     uploadPage = new UploadPage(loggedInPage);
@@ -45,7 +45,7 @@ test.describe('Communities', () => {
     // Fill in the record details
     await uploadPage.fillTitle(testData.upload.recordTitle());
     await uploadPage.fillFamilyName(testData.upload.familyName());
-    await uploadPage.selectDOIOption(true);
+    await uploadPage.selectDOIOption(true); // Adjust this based on your test needs
     await uploadPage.selectResourceType(currentlySelectedType);
 
     // Upload a file

@@ -27,8 +27,8 @@ test.describe('Search and Filter', () => {
     }
   });
 
-  // Test design: https://app.qase.io/case/RDM-38
-  test(qase(38, 'Filter - Access status'), async () => {  
+  // Test design: https://app.qase.io/case/RDM-40
+  test(qase(40, 'Search - In the Community'), async () => {  
     await communityDetailPage.navigateToCommunities();
     await communityDetailPage.navigateToFirstCommunity();
 

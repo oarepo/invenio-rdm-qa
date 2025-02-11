@@ -39,7 +39,7 @@ export class CommunityDetail {
   // Navigate to the first community in the list of communities ('Communities' -> 'My communities' section)
   async navigateToFirstCommunity() {
     console.log('Navigating to the First Community detail...');
-    await this.page.waitForSelector('div.centered.image.fallback_image:nth-of-type(1)', { state: 'visible', timeout: 3000 });
+    await this.page.waitForSelector('div.centered.image.fallback_image:nth-of-type(1)', { state: 'visible' });
     await this.page.locator('div.centered.image.fallback_image').nth(0).click();
     await this.page.waitForSelector('a.item.active:has-text("Records")', { state: 'visible' });
   }

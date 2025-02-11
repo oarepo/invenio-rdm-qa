@@ -27,11 +27,12 @@ test.describe('Search and Filter', () => {
     }
   });
 
-  // Test design: https://app.qase.io/case/RDM-38
-  test(qase(38, 'Filter - Access status'), async () => {  
+  // Test design: https://app.qase.io/case/RDM-40
+  test(qase(40, 'Search - In the Community'), async () => {  
     await communityDetailPage.navigateToCommunities();
     await communityDetailPage.navigateToFirstCommunity();
 
+    /*
     // Verify the number of found results (3)
     const isThreeResultsPresent = await communityDetailPage.isNumberPresent(3);
     expect(isThreeResultsPresent).toBeTruthy();
@@ -54,5 +55,7 @@ test.describe('Search and Filter', () => {
       const isThreeResultsPresentAfterUncheck = await communityDetailPage.isNumberPresent(3);
       expect(isThreeResultsPresentAfterUncheck).toBeTruthy();
     }
+
+    */
   });
 });

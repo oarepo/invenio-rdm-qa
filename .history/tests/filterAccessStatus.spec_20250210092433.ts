@@ -12,6 +12,7 @@ test.describe('Search and Filter', () => {
   let homePage: HomePage;
   let communityDetailPage: CommunityDetail;
   let recordDetailPage: RecordDetail;
+  let currentlySelectedType: string | null = null;
 
   test.beforeEach(async ({ loggedInPage, createCommunityAndUploadFiles }) => {
     uploadPage = new UploadPage(loggedInPage);
