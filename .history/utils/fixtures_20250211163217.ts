@@ -154,7 +154,7 @@ export const test = base.extend<{
 
   // Fixture for creating a community and uploading a file
   createCommunityAndUploadFiles: async ({ newCommunity, uploadPage }, use) => {
-    test.setTimeout(120000)
+    test.setTimeout(60000)
     const currentlySelectedType = 'Image';
     
     // Step 1: Create a new community
@@ -235,7 +235,7 @@ export const test = base.extend<{
 
   // Fixture for creating a community and uploading a files - open, metadata only and embargo 
   createCommunityAndUploadFile: async ({ newCommunity, uploadPage }, use) => {
-    test.setTimeout(60000)
+    test.setTimeout(120000)
     const currentlySelectedType = "your-type";
     
     // Step 1: Create a new community

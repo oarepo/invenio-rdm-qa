@@ -168,6 +168,7 @@ async isRecordTitleMatching(title: string): Promise<boolean> {
       console.log(`Record text at index ${i} is empty or not found.`);
     }
   }
+
   console.log(`No matching record found for title: "${title}"`);
   return false;
 }

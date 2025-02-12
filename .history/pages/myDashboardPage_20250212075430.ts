@@ -146,8 +146,10 @@ export class MyDashboard {
 async isRecordTitleMatching(title: string): Promise<boolean> {
   const recordLinks = this.page.locator('a.truncate-lines-2');
 
+  // Wait for the record list to be visible before proceeding
   await recordLinks.first().waitFor({ state: 'visible', timeout: 5000 });
 
+  // Retrieve the count of <a> elements
   const count = await recordLinks.count();
   console.log(`Found ${count} records to check.`);
 
@@ -168,6 +170,7 @@ async isRecordTitleMatching(title: string): Promise<boolean> {
       console.log(`Record text at index ${i} is empty or not found.`);
     }
   }
+
   console.log(`No matching record found for title: "${title}"`);
   return false;
 }

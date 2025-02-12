@@ -399,7 +399,7 @@ export class CommunityDetail {
   // Method to verify that the community name matches the generated name
   async verifyCommunityName(expectedCommunityName: string) {
     const communityNameLocator = this.getCommunityName();
-    await communityNameLocator.waitFor({ state: 'visible', timeout: 5000 });
+    await communityNameLocator.waitFor({ state: 'visible' });
 
     const actualCommunityName = await communityNameLocator.textContent();
 
@@ -412,7 +412,7 @@ export class CommunityDetail {
   // Method to verify if the community name was updated successfully
   async verifyUpdatedCommunityName(expectedCommunityName: string) {
     const communityNameLocator = this.getCommunityName();
-    await communityNameLocator.waitFor({ state: 'visible', timeout: 5000 });
+    await communityNameLocator.waitFor({ state: 'visible' });
 
     const actualCommunityName = await communityNameLocator.textContent();
 
@@ -501,7 +501,7 @@ export class CommunityDetail {
   // Method to check if the 'You' label is present (Communities -> Members)
   async isYouLabelPresent(): Promise<boolean> {
     const youLabel = this.page.locator('div.ui.tiny.label.primary', { hasText: 'You' });
-    await youLabel.waitFor({ state: 'visible', timeout: 5000 });
+    await youLabel.waitFor({ state: 'visible' });
     return await youLabel.isVisible();
   }
 
