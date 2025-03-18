@@ -59,9 +59,11 @@ test.describe('Records', () => {
     await uploadPage.clickAcceptPublishRecord();
 
     // Click the 'Submit record for review' button
+    await uploadPage.waitForTwoSeconds();
     await uploadPage.clickSubmitReviewButtonConfirm();
 
     // Check the status ('Submitted') of the new created record in the detail
+    await uploadPage.waitForTwoSeconds();
     const isSubmittedVisible = await uploadPage.verifySubmittedStatusPresence();
     expect(isSubmittedVisible).toBe(true);
 
@@ -79,6 +81,7 @@ test.describe('Records', () => {
 
     // Navigate to 'Closed' section and check the presence of the record
     await communityDetail.navigateToClosedSection();
+    await uploadPage.waitForTwoSeconds();
     await communityDetail.verifyClosedResultsFound();
   });
 });

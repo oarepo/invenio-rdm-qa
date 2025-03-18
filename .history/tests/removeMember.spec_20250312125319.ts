@@ -14,7 +14,7 @@ test.describe('Communities', () => {
   let loginPage: LoginPage;
   let myDashboard: MyDashboard;
 
-  test.beforeEach(async ({ loggedInPage, createNewCommunity }) => {
+  test.beforeEach(async ({ loggedInPage, createNewCommunity, inviteNewMemberToCommunity }) => {
     uploadPage = new UploadPage(loggedInPage);
     newCommunity = new NewCommunity(loggedInPage);
     communityDetail = new CommunityDetail(loggedInPage);
@@ -30,21 +30,6 @@ test.describe('Communities', () => {
 
   // Test design: https://app.qase.io/case/RDM-36
   test(qase(36, 'Remove Member'), async () => {  
-
-    // Navigate to the first community and click the 'Invite...' button 
-    await communityDetail.navigateToCommunities();
-    await communityDetail.navigateToFirstCommunity();
-    await communityDetail.navigateToMembersSection();
-    await communityDetail.clickInviteButton();
-
-    // Fill in 'Member' field
-    await communityDetail.fillMember();
-
-    // Select 'Curator' role 
-    await communityDetail.selectRoleByIndex(2);
-
-    // Confirm by clicking 'Invite' button
-    await communityDetail.clickInviteButtonConfirmation();
 
     // Logout from the Invenio RDM
     await newCommunity.navigateToHome();
@@ -65,7 +50,7 @@ test.describe('Communities', () => {
     // Logout from the Invenio RDM and Login back as owner
     await newCommunity.navigateToHome();
     await loginPage.logout();
-    const ownerCredentials = testData.getCredentials('owner');
+    const ownerCredentials = testData.getCredentials('owner2');
     await loginPage.login(ownerCredentials.email, ownerCredentials.password);
 
     // Navigate to the 'Communities' page
@@ -76,10 +61,12 @@ test.describe('Communities', () => {
 
     // Click 'Remove...' button and confirm in pop up 'Remove user' dialog
     await communityDetail.clickRemoveButton();
-    await communityDetail.clickRemoveButtonByIndex(1);
+    await communityDetail.clickRemoveButtonConfirm(1);
+    await communityDetail.navigateToSettingsSection();
+    await communityDetail.navigateToMembersSection();
 
-    // Check if the message 'This community has no public members.' is present
-    //const isMessagePresent = await communityDetail.verifyLeaveCommunity();
-    //expect(isMessagePresent).toBe(true);
+    // Check if the message 'Remove...' button is NOT present
+    const isButtonNotPresent = await communityDetail.verifyRemoveUser();
+    expect(isButtonNotPresent).toBe(true);
   });
 });

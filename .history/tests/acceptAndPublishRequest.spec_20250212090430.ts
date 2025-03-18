@@ -79,6 +79,7 @@ test.describe('Records', () => {
 
     // Navigate to 'Closed' section and check the presence of the record
     await communityDetail.navigateToClosedSection();
+    await uploadPage.waitForTwoSeconds();
     await communityDetail.verifyClosedResultsFound();
   });
 });
