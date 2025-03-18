@@ -9,12 +9,11 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,  // Disallow '.only' on tests in CI to prevent accidental skipping
   retries: process.env.CI ? 2 : 0,  // Retry failed tests only in CI (2 retries), none locally
   workers: process.env.CI ? 1 : undefined,  // Limit to 1 worker in CI (to avoid overloading the system), undefined for local
-  globalTeardown: './utils/globalTeardown.ts', // Link to teardown file - in this file you can set exit code
 
   timeout: process.env.TEST_TIMEOUT ? Number(process.env.TEST_TIMEOUT) : 120000, // Global test timeout (default: 120 seconds)
 
   reporter: [
-    ['list'],  // Use the list reporter for test results in the terminal (you can use: json, html, allure format etc)
+    ['list'],  // Use the list reporter for test results in the terminal
     ['playwright-qase-reporter', {
       debug: true,  // Enable debug mode for the QASE reporter
       testops: {
