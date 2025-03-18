@@ -278,6 +278,10 @@ test.afterEach(async ({ page }, testInfo) => {
     const screenshotPath = join(screenshotDir, `${testInfo.title.replace(/[^a-zA-Z0-9]/g, '_')}.png`); // Define screenshot path
     await page.screenshot({ path: screenshotPath, fullPage: true }); // Capture a full-page screenshot
     console.log(`Screenshot captured at: ${screenshotPath}`); // Log screenshot path for debugging
+
+    // Add a delay before the test is retried
+    console.log('Test failed, waiting 61 seconds before retrying...');
+    await new Promise(resolve => setTimeout(resolve, 61000));
   }
 });
 

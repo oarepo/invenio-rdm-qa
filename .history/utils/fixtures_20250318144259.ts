@@ -155,7 +155,7 @@ export const test = base.extend<{
   // Fixture for creating a community and uploading a file
   createCommunityAndUploadFiles: async ({ newCommunity, uploadPage }, use) => {
     test.setTimeout(120000)
-    const currentlySelectedType = "your-type";
+    const currentlySelectedType = 'Image';
     
     // Step 1: Create a new community
     await newCommunity.navigateToNewCommunities();
@@ -213,12 +213,11 @@ export const test = base.extend<{
     await uploadPage.selectDOIOption(true);
     await uploadPage.selectResourceType(currentlySelectedType);
     await uploadPage.uploadRandomFile();
-    await uploadPage.clickFullRecordRestrictedButton();
     await uploadPage.waitForTwoSeconds();
+    await uploadPage.clickFullRecordRestrictedButton();
     await uploadPage.checkEmbargoCheckbox();
     await uploadPage.setEmbargoUntilDate();
     await uploadPage.fillEmbargoReason();
-    await uploadPage.navigateToMyDashboard();
     await uploadPage.clickSelectCommunityButton();
     await uploadPage.clickMyCommunitiesTab();
     await uploadPage.clickSelectButton(communityName);
@@ -236,6 +235,7 @@ export const test = base.extend<{
 
   // Fixture for creating a community and uploading a files - open, metadata only and embargo 
   createCommunityAndUploadFile: async ({ newCommunity, uploadPage }, use) => {
+    test.setTimeout(60000)
     const currentlySelectedType = "your-type";
     
     // Step 1: Create a new community
@@ -278,6 +278,10 @@ test.afterEach(async ({ page }, testInfo) => {
     const screenshotPath = join(screenshotDir, `${testInfo.title.replace(/[^a-zA-Z0-9]/g, '_')}.png`); // Define screenshot path
     await page.screenshot({ path: screenshotPath, fullPage: true }); // Capture a full-page screenshot
     console.log(`Screenshot captured at: ${screenshotPath}`); // Log screenshot path for debugging
+
+    // Add a delay before the test is retried
+    console.log('Test failed, waiting 5 seconds before retrying...');
+    await new Promise(resolve => setTimeout(resolve, 5000));
   }
 });
 

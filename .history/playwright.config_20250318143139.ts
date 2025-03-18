@@ -3,6 +3,9 @@ import { defineConfig, devices } from '@playwright/test';
 console.log("QASE_TESTOPS_API_TOKEN:", process.env.QASE_TESTOPS_API_TOKEN);
 console.log("QASE_TESTOPS_PROJECT:", process.env.QASE_TESTOPS_PROJECT);
 
+// Function for waiting between attempts
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 export default defineConfig({
   testDir: './tests',  // Directory where tests are located
   fullyParallel: true,  // Run tests in parallel

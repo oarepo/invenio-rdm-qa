@@ -1,7 +1,10 @@
-import { defineConfig, devices } from '@playwright/test';
-
 console.log("QASE_TESTOPS_API_TOKEN:", process.env.QASE_TESTOPS_API_TOKEN);
 console.log("QASE_TESTOPS_PROJECT:", process.env.QASE_TESTOPS_PROJECT);
+
+import { defineConfig, devices } from '@playwright/test';
+
+// Function for waiting between attempts
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export default defineConfig({
   testDir: './tests',  // Directory where tests are located
@@ -44,7 +47,7 @@ export default defineConfig({
     actionTimeout: process.env.ACTION_TIMEOUT ? Number(process.env.ACTION_TIMEOUT) : 5000,  // Timeout for individual actions (default: 5 seconds)
     navigationTimeout: process.env.NAVIGATION_TIMEOUT ? Number(process.env.NAVIGATION_TIMEOUT) : 10000,  // Timeout for page navigation (default: 10 seconds)
   },
-  
+
   /*
   TEST_TIMEOUT: This will set the global timeout for each test.
   ACTION_TIMEOUT: This will set the timeout for individual actions like clicks or typing. (Timeout specified in test are NOT changed)
