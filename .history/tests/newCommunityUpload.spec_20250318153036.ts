@@ -56,11 +56,11 @@ test.describe('Records', () => {
     await uploadPage.clickAcceptPublishRecord();
 
     // Click the 'Submit record for review' button
-    await uploadPage.waitForTwoSeconds();
+    //await uploadPage.waitForTwoSeconds();
     await uploadPage.clickSubmitReviewButtonConfirm();
 
     // Check the status ('Submitted') of the new created record in the detail
-    await uploadPage.waitForTwoSeconds();
+    //await uploadPage.waitForTwoSeconds();
     const isSubmittedVisible = await uploadPage.verifySubmittedStatusPresence();
     expect(isSubmittedVisible).toBe(true);
 
@@ -69,16 +69,8 @@ test.describe('Records', () => {
     await uploadPage.clickConfirmationAcceptAndPublishButton();
 
     // Check the status ('Accepted') of the new created record in the detail
-    await uploadPage.waitForTwoSeconds();
-    let isConfirmationVisible = await uploadPage.verifyConfirmationStatusPresence();
+    //await uploadPage.waitForTwoSeconds();
+    const isConfirmationVisible = await uploadPage.verifyConfirmationStatusPresence();
     expect(isConfirmationVisible).toBe(true);
-
-    if (!isConfirmationVisible) {
-        await uploadPage.waitForTwoSeconds(); // Retry after a short delay
-        isConfirmationVisible = await uploadPage.verifyConfirmationStatusPresence();
-    }
-    
-    expect(isConfirmationVisible).toBe(true);
-
   });
 });

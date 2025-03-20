@@ -235,8 +235,8 @@ export const test = base.extend<{
     await uploadPage.clickAcceptAndPublishButton();
     await uploadPage.clickConfirmationAcceptAndPublishButton();
     
-    // @ts-ignore
-    await use();
+    //await use();
+    await use(async () => {});
   },
 
   // Fixture for creating a community and uploading a files - open, metadata only and embargo 

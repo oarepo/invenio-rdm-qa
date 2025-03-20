@@ -100,7 +100,6 @@ export const test = base.extend<{
     await uploadPage.waitForTwoSeconds();
     await uploadPage.navigateToHome();
 
-    // @ts-ignore
     await use(); // This allows the test to continue after the fixture has run
   },
 
@@ -117,7 +116,6 @@ export const test = base.extend<{
     await uploadPage.uploadRandomFile();
     await uploadPage.waitForTwoSeconds();
 
-    // @ts-ignore
     await use(); // This allows the test to continue after the fixture has run
   },
 
@@ -128,7 +126,6 @@ export const test = base.extend<{
     await newCommunity.fillCommunityIdentifier();
     await newCommunity.clickCreateCommunity();
     
-    // @ts-ignore
     await use();
   },
 
@@ -139,7 +136,6 @@ export const test = base.extend<{
     await communityDetail.navigateToMembersSection();
     await communityDetail.clickInviteButton();
     
-    // @ts-ignore
     await use();
   },
 
@@ -235,8 +231,8 @@ export const test = base.extend<{
     await uploadPage.clickAcceptAndPublishButton();
     await uploadPage.clickConfirmationAcceptAndPublishButton();
     
-    // @ts-ignore
-    await use();
+    //await use();
+    await use(async () => {});
   },
 
   // Fixture for creating a community and uploading a files - open, metadata only and embargo 
@@ -274,8 +270,8 @@ export const test = base.extend<{
     await uploadPage.clickAcceptAndPublishButton();
     await uploadPage.clickConfirmationAcceptAndPublishButton();
     
-    // @ts-ignore
-    await use();
+   // await use();
+   await use(async () => {});
   },
 });
 

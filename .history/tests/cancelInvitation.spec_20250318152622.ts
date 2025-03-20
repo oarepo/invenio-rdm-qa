@@ -43,7 +43,7 @@ test.describe('Communities', () => {
     await myDashboard.navigateToMyDashboard();
     await myDashboard.navigateToRequests();
   
-    // Click 'Decline' button (decline invitation to the community) - by index: 0 = first request
+    // Click 'Decline' button (accept invitation to the community) - by index: 0 = first request
     await myDashboard.clickDeclineButton(0);
     await myDashboard.clickDeclineButtonConfirm();
     await myDashboard.waitForTwoSeconds();
