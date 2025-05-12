@@ -10,7 +10,7 @@ test.describe('CLI help tests', () => {
     expect(output).toMatchSnapshot('nrp-cmd-help.txt')
   })
 
-  // Dynamicky vygeneruj testy pro každé hlavní slovo z výpisu
+  // Dynamically generate tests for each top-level command from the help output
   const mainHelp = runCLI('--help')
   const topLevelCommands = parseCommands(mainHelp)
 
@@ -22,7 +22,7 @@ test.describe('CLI help tests', () => {
     })
   }
 
-  // Bonus: testuj i podpříkazy pro multi-commandy jako `records`
+  // Test subcommands for multi-command groups like `records`
   const subCommandParents = ['records', 'repositories', 'requests', 'variables', 'files']
 
   for (const parent of subCommandParents) {

@@ -22,7 +22,7 @@ test.describe('CLI help tests', () => {
     })
   }
 
-  // Bonus: also test subcommands for multi-command groups like `records`
+  // Test subcommands for multi-command groups like `records`
   const subCommandParents = ['records', 'repositories', 'requests', 'variables', 'files']
 
   for (const parent of subCommandParents) {
