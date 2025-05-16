@@ -19,7 +19,7 @@ export class LoginPage {
 
   // Method to log in using email and password
   async login(email: string, password: string) {
-    await this.uiHelper.clickByRole('link', ' Log in');
+    await this.uiHelper.clickByRole('link', 'Log in');
     await this.uiHelper.fillPlaceholder('Email Address', email);
     await this.uiHelper.fillPlaceholder('Password', password);
     await this.uiHelper.clickByRole('button', 'Log in');
@@ -28,12 +28,12 @@ export class LoginPage {
   // Method to log out from the application
   async logout() {
     await this.uiHelper.clickByRole('button', 'My account');
-    await this.uiHelper.clickByRole('menuitem', ' Log out');
+    await this.uiHelper.clickByRole('menuitem', 'Log out');
   }
 
   // Method to navigate to the profile page
   async navigateToProfile() {
     await this.uiHelper.clickByLabel('My account');
-    await this.uiHelper.clickByRole('menuitem', ' Profile');
+    await this.uiHelper.clickByRole('menuitem', 'Profile');
   }
 }
