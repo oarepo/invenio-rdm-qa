@@ -15,7 +15,7 @@ export default defineConfig({
 
   reporter: [
     ['list'],  // Use the list reporter for test results in the terminal (you can use: json, html, allure format etc)
-   // ['json', { outputFile: 'playwright-report/results.json' }], // JSON report for globalTeardown
+    ['json', { outputFile: 'playwright-report/results.json' }], // JSON report for globalTeardown
     ['playwright-qase-reporter', {
       debug: true,  // Enable debug mode for the QASE reporter
       testops: {
