@@ -1,0 +1,172 @@
+{
+  "config": {
+    "configFile": "/Users/petrbrablc/Desktop/qa/playwright.config.ts",
+    "rootDir": "/Users/petrbrablc/Desktop/qa/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": "/Users/petrbrablc/Desktop/qa/utils/globalTeardown.ts",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ],
+      [
+        "/Users/petrbrablc/Desktop/qa/node_modules/playwright-qase-reporter/dist/index.js",
+        {
+          "debug": true,
+          "testops": {
+            "api": {},
+            "environment": "production",
+            "uploadAttachments": true,
+            "run": {
+              "complete": true
+            }
+          },
+          "logging": true
+        }
+      ],
+      [
+        "html",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/petrbrablc/Desktop/qa/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/petrbrablc/Desktop/qa/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.48.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "submissionReviewPolicy.spec.ts",
+      "file": "submissionReviewPolicy.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Communities",
+          "file": "submissionReviewPolicy.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Submission review policy (Qase ID: 18)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 17186,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Navigating to the New Community page...\n"
+                        },
+                        {
+                          "text": "Filled the community name field with: decretum\n"
+                        },
+                        {
+                          "text": "Filled the community identifier field with: esse_431916\n"
+                        },
+                        {
+                          "text": "Clicked the \"Create community\" button.\n"
+                        },
+                        {
+                          "text": "Navigating to the Communities page...\n"
+                        },
+                        {
+                          "text": "Navigating to the First Community detail...\n"
+                        },
+                        {
+                          "text": "Navigating to the Settings section...\n"
+                        },
+                        {
+                          "text": "Navigating to review policy...\n"
+                        },
+                        {
+                          "text": "Navigating to the upload section...\n"
+                        },
+                        {
+                          "text": "Uploading file: /Users/petrbrablc/Desktop/qa/data/UploadFiles/Anon6.jpg\n"
+                        },
+                        {
+                          "text": "Clicking the Publish button...\n"
+                        },
+                        {
+                          "text": "Record with title \"Iste odio accommodo inflammatio sperno coaegresco acquiro caelum umerus.\" exists.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-05-22T15:51:06.621Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0976d87e2b0c874eafb2-4987422180e71c4fc22d",
+              "file": "submissionReviewPolicy.spec.ts",
+              "line": 27,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-05-22T15:51:05.711Z",
+    "duration": 21211.411999940872,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

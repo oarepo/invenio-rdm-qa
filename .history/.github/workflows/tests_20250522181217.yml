@@ -2,9 +2,11 @@ name: Run Playwright Tests
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 env:
   QASE_TESTOPS_PROJECT: ${{ secrets.QASE_TESTOPS_PROJECT }}
@@ -33,10 +35,8 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run all tests (initial pass)
-        run: npx playwright test || true
-
-      - name: Verify JSON report exists
         run: |
+          npx playwright test || true
           if [ -f test-results.json ]; then
             echo "JSON report generated"
           else
@@ -60,7 +60,8 @@ jobs:
           fi
 
       - name: Final run to push results to Qase
-        run: QASE_MODE=testops npx playwright test --reporter=json || true
+        run: |
+          QASE_MODE=testops npx playwright test --reporter=json || true
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

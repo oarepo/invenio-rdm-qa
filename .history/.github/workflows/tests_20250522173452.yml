@@ -1,5 +1,3 @@
-name: Run Playwright Tests
-
 on:
   push:
     branches: [main]
