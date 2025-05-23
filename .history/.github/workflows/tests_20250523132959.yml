@@ -12,7 +12,6 @@ env:
   QASE_ENVIRONMENT: ${{ secrets.QASE_ENVIRONMENT || 'Invenio-RDM' }}
   QASE_MODE: testops
   HEADLESS: true
-  CI: true
 
 jobs:
   tests_e2e:
