@@ -42,6 +42,7 @@ export default defineConfig({
   ACTION_TIMEOUT: This will set the timeout for individual actions like clicks or typing. (Timeout specified in test are NOT changed)
   NAVIGATION_TIMEOUT: This will set the timeout for navigating between pages. 
   example - run from command line: TEST_TIMEOUT=120000 ACTION_TIMEOUT=8000 NAVIGATION_TIMEOUT=20000 npx playwright test
+  
   */
 
   projects: [
