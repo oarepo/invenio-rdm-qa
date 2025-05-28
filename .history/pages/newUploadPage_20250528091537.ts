@@ -426,11 +426,6 @@ export class UploadPage {
     return rowCount; // Return the count of rows (uploaded files)
   }
 
-  async waitForUploadedFilesTable() {
-    const firstRow = this.page.locator('table.ui.striped.table.files.fluid.open tbody tr').first();
-    await firstRow.waitFor({ state: 'visible', timeout: 5000 });
-  }
-
   // Method to verify specific validation error messages
   async verifyValidationErrors() {
     const resourceTypeError = this.page.locator('div.left.aligned.fifteen.wide.column ul.list li.content', { hasText: 'Resource type' });

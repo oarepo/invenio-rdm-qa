@@ -426,6 +426,11 @@ export class UploadPage {
     return rowCount; // Return the count of rows (uploaded files)
   }
 
+  async waitForUploadedFilesTable() {
+    const firstRow = this.page.locator('table.ui.striped.table.files.fluid.open tbody tr').first();
+    await firstRow.waitFor({ state: 'visible', timeout: 5000 });
+  }
+
   // Method to verify specific validation error messages
   async verifyValidationErrors() {
     const resourceTypeError = this.page.locator('div.left.aligned.fifteen.wide.column ul.list li.content', { hasText: 'Resource type' });
@@ -458,9 +463,9 @@ export class UploadPage {
 
   // Method to verify the presence of the confirmation element ('Accept' status in record request)
   async verifyConfirmationStatusPresence() {
-    const confirmationElement = await this.page.locator('i.check.circle.icon + span:has-text("Accepted")');
-    const isVisible = await confirmationElement.isVisible();
-    return isVisible;
+    const confirmationElement = this.page.locator('i.check.circle.icon + span:has-text("Accepted")');
+    await confirmationElement.waitFor({ state: 'visible' });
+    return true;
   }
 
   async verifyAddedUserForShare(): Promise<boolean> {

@@ -428,7 +428,7 @@ export class UploadPage {
 
   async waitForUploadedFilesTable() {
     const firstRow = this.page.locator('table.ui.striped.table.files.fluid.open tbody tr').first();
-    await firstRow.waitFor({ state: 'visible', timeout: 5000 });
+    await firstRow.waitFor({ state: 'visible', timeout: 5000 }); // max 5s čekání
   }
 
   // Method to verify specific validation error messages
