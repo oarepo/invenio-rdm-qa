@@ -36,6 +36,7 @@ test.describe('Embargo', () => {
     await uploadPage.clickPublishOnConfirmation();
 
     // Verify if the 'Restricted' status label is present
+   // await recordDetailPage.waitForTwoSeconds();
     const restrictedLabelVisible = await recordDetailPage.isRestrictedLabelPresent();
     expect(restrictedLabelVisible).toBe(true);
 
