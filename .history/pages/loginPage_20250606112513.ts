@@ -27,10 +27,7 @@ export class LoginPage {
 
   // Method to log out from the application
   async logout() {
-    const profileButton = this.page.locator('#user-profile-dropdown-btn');
-    await profileButton.waitFor({ state: 'visible', timeout: 5000 });
-    await profileButton.click();
-  
+    await this.uiHelper.clickByRole('button', 'My account');
     const logoutMenuItem = this.page.getByRole('menuitem', { name: 'Log out' });
     await logoutMenuItem.waitFor({ state: 'visible', timeout: 5000 });
     await logoutMenuItem.click();

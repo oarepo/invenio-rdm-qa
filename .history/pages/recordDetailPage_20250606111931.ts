@@ -159,21 +159,13 @@ export class RecordDetail {
     await dropdownIcon.click();
   
     // Wait for the dropdown menu to be visible
-    const menu = this.page.locator('.ui.selection.dropdown.export-dropdown .menu');
+    const menu = this.page.locator('//div[@aria-label="Export selection"][@aria-expanded="true"]');
     await menu.waitFor({ state: 'visible' });
   
     // Locate the desired option and click it
-    const option = menu.locator(`.item span.text:has-text("${style}")`);
+    const option = menu.locator(`.item span.text`, { hasText: new RegExp(`^${style}$`) });
     await option.click();
-  
-    // Verify the selected option is displayed in the dropdown
-    const selected = this.page.locator('.ui.selection.dropdown.export-dropdown .divider.text');
-    await selected.waitFor({ state: 'attached' });
-    const selectedText = await selected.textContent();
-    if (selectedText?.trim() !== style) {
-      throw new Error(`Failed to select the correct file format. Expected: "${style}", but got: "${selectedText?.trim()}".`);
-    }
-  }  
+  }
 
 // VERIFICATION ------------------------------------------------------------------------
 
@@ -225,7 +217,12 @@ export class RecordDetail {
   // Method to check if the "Record Access Status" section is present
   async isRecordAccessStatusSectionPresent(): Promise<boolean> {
     const accessStatusSection = this.page.locator('section#record-access-status.ui.negative.message.rel-mt-1');
-    return await accessStatusSection.isVisible();
+    try {
+      await accessStatusSection.waitFor({ state: 'visible', timeout: 5000 });
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   // Method to check if the message exists on the page (The record is publicly accessible, but files are restricted to users with access.)

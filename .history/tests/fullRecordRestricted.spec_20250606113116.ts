@@ -46,6 +46,7 @@ test.describe('Embargo', () => {
 
     // Logout from the Invenio RDM
     await loginPage.logout();
+    //await new Promise(r => setTimeout(r, 2000));
 
     // Navigate to the community again and check that 'Restricted' record is not present
     await communityDetail.navigateToCommunities();
