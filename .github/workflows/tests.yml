@@ -29,7 +29,7 @@ jobs:
         run: |
           set +e
           QASE_MODE=testops npx playwright test
-          echo "⚠️ Testy mohou selhat, ale build bude pokračovat dál. Resulty zkontroluj v Qase."
+          echo "Tests may fail, but the build will continue. Check the results in Qase."
           exit 0
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

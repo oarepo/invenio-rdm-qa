@@ -1,8 +1,0 @@
-{
-    "testops": {
-      "api": {
-        "token": "QASE_TESTOPS_API_TOKEN"
-      },
-      "project": "QASE_TESTOPS_PROJECT"
-    }
-  }

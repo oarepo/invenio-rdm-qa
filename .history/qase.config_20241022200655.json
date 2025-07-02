@@ -1,8 +1,0 @@
-{
-    "testops": {
-      "api": {
-        "token": "process.env.QASE_TESTOPS_API_TOKEN"
-      },
-      "project": "process.env.QASE_TESTOPS_PROJECT"
-    }
-  }
