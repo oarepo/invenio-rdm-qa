@@ -168,13 +168,6 @@ export class UploadPage {
     await this.uiHelper.clickButtonByText('Save');
   }
 
-  // Method to click 'Upload' button
-  async clickUpload() {
-    const uploadButton = this.page.locator('button[aria-label^="Upload"]');
-    await uploadButton.waitFor({ state: 'visible' });
-    await uploadButton.click();
-  }
-
   // Method to click 'Publish' button
   async clickPublish() {
     await this.page.waitForSelector('button:has-text("Publish")', { state: 'visible' });

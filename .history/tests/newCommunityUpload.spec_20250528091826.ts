@@ -33,11 +33,11 @@ test.describe('Records', () => {
     await uploadPage.navigateToUploadSection();
     await uploadPage.fillTitle(testData.upload.recordTitle());
     await uploadPage.fillFamilyName(testData.upload.familyName());
+    await uploadPage.selectDOIOption(true);
     await uploadPage.selectResourceType(currentlySelectedType);
 
     // Upload a file
     await uploadPage.uploadRandomFile();
-    await uploadPage.clickUpload();
 
     // Click the 'Select a community' button
     await uploadPage.clickSelectCommunityButton();

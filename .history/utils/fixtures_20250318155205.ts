@@ -92,9 +92,9 @@ export const test = base.extend<{
     await uploadPage.navigateToUploadSection();
     await uploadPage.fillTitle(testData.upload.recordTitle());
     await uploadPage.fillFamilyName(testData.upload.familyName());
+    await uploadPage.selectDOIOption(true); // Adjust based on test needs
     await uploadPage.selectResourceType(currentlySelectedType);
     await uploadPage.uploadRandomFile();
-    await uploadPage.clickUpload();
     await uploadPage.clickPublish();
     await uploadPage.clickPublishOnConfirmation();
     await uploadPage.waitForTwoSeconds();
@@ -112,9 +112,9 @@ export const test = base.extend<{
     await uploadPage.navigateToUploadSection();
     await uploadPage.fillTitle(testData.upload.recordTitle());
     await uploadPage.fillFamilyName(testData.upload.familyName());
+    await uploadPage.selectDOIOption(true); // Adjust based on test needs
     await uploadPage.selectResourceType(currentlySelectedType);
     await uploadPage.uploadRandomFile();
-    await uploadPage.clickUpload();
     await uploadPage.waitForTwoSeconds();
 
     // @ts-ignore

@@ -24,14 +24,11 @@ test.describe('Records', () => { // test.describe seskupuje testy týkající se
     // Fill in the record details
     await uploadPage.fillTitle(testData.upload.recordTitle());
     await uploadPage.fillFamilyName(testData.upload.familyName());
-   // await uploadPage.selectDOIOption(true); // Adjust this based on your test needs
+    await uploadPage.selectDOIOption(true); // Adjust this based on your test needs
     await uploadPage.selectResourceType(currentlySelectedType);
 
     // Upload a file
     await uploadPage.uploadRandomFile();
-
-    // Click the 'Upload' button
-    await uploadPage.clickUpload();
 
     // Click the 'Publish' button
     await uploadPage.clickPublish();

@@ -30,9 +30,6 @@ test.describe('Records', () => { // test.describe seskupuje testy týkající se
     // Upload a file
     await uploadPage.uploadRandomFile();
 
-    // Click the 'Upload' button
-    await uploadPage.clickUpload();
-
     // Click the 'Publish' button
     await uploadPage.clickPublish();
 

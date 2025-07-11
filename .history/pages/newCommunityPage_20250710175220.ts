@@ -106,7 +106,7 @@ export class NewCommunity {
 
   // Method to get the community name ('Settings' menu in the community detail)
   getCommunityName() {
-    return this.page.locator("input#metadata\\.title");
+    return this.page.locator('input#metadata\\.title');
   }
 
   // Method to check name of the first community in 'Communities' list
@@ -118,17 +118,14 @@ export class NewCommunity {
 
   // Method to verify that the community name matches the generated name
   async verifyCommunityName(expectedCommunityName: string) {
-    const communityInput = this.getCommunityName();
+    const communityNameLocator = this.getCommunityName();
+    const actualCommunityName = await communityNameLocator.textContent();
 
-    // Wait for visibility of input
-    await communityInput.waitFor({ state: "visible" });
-    const actualCommunityName = await communityInput.inputValue();
-
-    // Assertion with trim
-    expect(actualCommunityName.trim()).toBe(expectedCommunityName.trim());
-
+    // Assertion to check the community name
+    expect(actualCommunityName).not.toBeNull();
+    await expect(communityNameLocator).toHaveText(expectedCommunityName);
     console.log(
-      `Verified the community name matches: ${expectedCommunityName}`
+      `Verified the community name is present on the page and matches: ${expectedCommunityName}`
     );
   }
 }
