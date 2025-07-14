@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                          // Set the JavaScript language version
+    "module": "commonjs",                     // Use CommonJS for compatibility with Node.js
+    "moduleResolution": "node",               // Resolve modules using Node.js style
+    "esModuleInterop": true,                  // Enable default imports from CommonJS modules
+    "strict": true,                           // Enable all strict type-checking options
+    "resolveJsonModule": true,                // Allow importing .json files
+    "outDir": "dist",                         // Output directory for compiled JS (optional)
+    "baseUrl": ".",                           // Base path for non-relative module imports
+    "paths": {
+      "*": ["*"]                              // Allow wildcard path resolution (can be extended)
+    }
+  },
+  "include": ["**/*.ts"],                     // Include all TypeScript files in the project
+  "exclude": ["node_modules", "dist"]         // Exclude node_modules and build output directory
+}
