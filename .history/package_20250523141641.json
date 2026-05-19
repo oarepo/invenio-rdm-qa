@@ -1,0 +1,22 @@
+{
+  "name": "rdm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "cli": "uvx nrp-cmd"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.48.1",
+    "@types/node": "^22.7.4",
+    "playwright-qase-reporter": "^2.1.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.0.3"
+  }
+}
