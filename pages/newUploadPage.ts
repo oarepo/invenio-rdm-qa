@@ -129,8 +129,8 @@ export class UploadPage {
 
   // Method to fill the 'Description' in the iframe
   async fillDescription(description: string) {
-    const iframeElement = this.page.frameLocator('iframe[id^="tiny-react"]'); // Flexible selector for the iframe (ID starting with 'tiny-react')
-    const body = iframeElement.first().locator('body#tinymce'); // Select the first iframe (if there are multiple) and then locate the body element inside the iframe
+    const iframeElement = this.page.frameLocator('iframe.tox-edit-area__iframe'); // Editor iframe; class shared by TinyMCE and HugeRTE
+    const body = iframeElement.first().locator('body.mce-content-body'); // Select the first iframe (if there are multiple) and then locate the body element inside the iframe
     await body.waitFor({ state: 'visible' });
     await body.fill(description);
   }
